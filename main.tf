@@ -36,7 +36,21 @@ locals {
   // Names based in the recomendations of
   // https://cloud.google.com/compute/docs/naming-resources
   gcp = {
+    container_cluster = {
+      name        = substr(join("-", compact([local.prefix, "gke", local.suffix])), 0, 50)
+      name_unique = substr(join("-", compact([local.prefix, "gke", local.suffix_unique])), 0, 50)
+      dashes      = true
+      slug        = "gke"
+      min_length  = 1
+      max_length  = 50
+      scope       = "project"
+      regex       = "^[a-z][a-zA-Z0-9]+$"
+    }
   }
   validation = {
+    container_cluster = {
+      valid_name        = length(regexall(local.gcp.container_cluster.regex, local.gcp.container_cluster.name)) > 0 && length(local.gcp.container_cluster.name) > local.gcp.container_cluster.min_length
+      valid_name_unique = length(regexall(local.gcp.container_cluster.regex, local.gcp.container_cluster.name_unique)) > 0
+    }
   }
 }
