@@ -6,4 +6,9 @@ output "unique-seed" {
 output "validation" {
   value = local.validation
 }
+output "container_cluster" {
+  value       = local.gcp.container_cluster
+  description = "Container Cluster"
+}
+
 
