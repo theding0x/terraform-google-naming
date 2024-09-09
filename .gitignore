@@ -1,6 +1,6 @@
 .terraform/
 *.tfstate*
-terraform-azurerm-naming
+terraform-google-naming
 .terraform.lock.hcl
 
 *.iml

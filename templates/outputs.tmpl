@@ -1,6 +1,6 @@
 {{ define "output" }}
 output "{{ .Name }}" {
-  value       = local.az.{{ .Name }}
+  value       = local.gcp.{{ .Name }}
   description = "{{ replace .Name "_" " " | title }}"
 }
 {{ end }}

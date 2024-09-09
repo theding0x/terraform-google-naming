@@ -13,8 +13,8 @@
 
 {{- define "validation" -}}
     {{- .Name }} = {
-      valid_name        = length(regexall(local.az.{{- .Name }}.regex, local.az.{{- .Name }}.name)) > 0 && length(local.az.{{- .Name }}.name) > local.az.{{- .Name }}.min_length
-      valid_name_unique = length(regexall(local.az.{{- .Name }}.regex, local.az.{{- .Name }}.name_unique)) > 0
+      valid_name        = length(regexall(local.gcp.{{- .Name }}.regex, local.gcp.{{- .Name }}.name)) > 0 && length(local.gcp.{{- .Name }}.name) > local.gcp.{{- .Name }}.min_length
+      valid_name_unique = length(regexall(local.gcp.{{- .Name }}.regex, local.gcp.{{- .Name }}.name_unique)) > 0
     }
 {{- end -}}
 
@@ -57,8 +57,8 @@ locals {
   suffix_safe            = lower(join("", var.suffix))
   suffix_unique_safe     = lower(join("", concat(var.suffix, [local.random])))
   // Names based in the recomendations of
-  // https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
-  az = {
+  // https://cloud.google.com/compute/docs/naming-resources
+  gcp = {
     {{- range . }}
     {{ template  "resources" .}}
     {{- end }}
