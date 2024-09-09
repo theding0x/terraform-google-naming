@@ -5,9 +5,20 @@
       "min": 1,
       "max": 50
     },
-    "regex": "^(?=.{1,50}$)[a-z][a-zA-Z0-9]+$",
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
     "scope": "project",
     "slug": "gke",
+    "dashes": true
+  },
+  {
+    "name": "compute_network",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "vpc",
     "dashes": true
   }
 ]

@@ -36,6 +36,16 @@ locals {
   // Names based in the recomendations of
   // https://cloud.google.com/compute/docs/naming-resources
   gcp = {
+    compute_network = {
+      name        = substr(join("-", compact([local.prefix, "vpc", local.suffix])), 0, 50)
+      name_unique = substr(join("-", compact([local.prefix, "vpc", local.suffix_unique])), 0, 50)
+      dashes      = true
+      slug        = "vpc"
+      min_length  = 1
+      max_length  = 50
+      scope       = "project"
+      regex       = "^[a-z]([-a-z0-9]*[a-z0-9])?$"
+    }
     container_cluster = {
       name        = substr(join("-", compact([local.prefix, "gke", local.suffix])), 0, 50)
       name_unique = substr(join("-", compact([local.prefix, "gke", local.suffix_unique])), 0, 50)
@@ -44,10 +54,14 @@ locals {
       min_length  = 1
       max_length  = 50
       scope       = "project"
-      regex       = "^[a-z][a-zA-Z0-9]+$"
+      regex       = "^[a-z]([-a-z0-9]*[a-z0-9])?$"
     }
   }
   validation = {
+    compute_network = {
+      valid_name        = length(regexall(local.gcp.compute_network.regex, local.gcp.compute_network.name)) > 0 && length(local.gcp.compute_network.name) > local.gcp.compute_network.min_length
+      valid_name_unique = length(regexall(local.gcp.compute_network.regex, local.gcp.compute_network.name_unique)) > 0
+    }
     container_cluster = {
       valid_name        = length(regexall(local.gcp.container_cluster.regex, local.gcp.container_cluster.name)) > 0 && length(local.gcp.container_cluster.name) > local.gcp.container_cluster.min_length
       valid_name_unique = length(regexall(local.gcp.container_cluster.regex, local.gcp.container_cluster.name_unique)) > 0
