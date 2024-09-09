@@ -11,14 +11,14 @@ resource "random_string" "main" {
   length  = 60
   special = false
   upper   = false
-  numeric = var.unique-include-numbers
+  numeric  = var.unique-include-numbers
 }
 
 resource "random_string" "first_letter" {
   length  = 1
   special = false
   upper   = false
-  numeric = false
+  numeric  = false
 }
 
 
@@ -36,6 +36,16 @@ locals {
   // Names based in the recomendations of
   // https://cloud.google.com/compute/docs/naming-resources
   gcp = {
+    compute_ha_vpn_gateway = {
+      name        = substr(join("-", compact([local.prefix, "vpn", local.suffix])), 0, 50)
+      name_unique = substr(join("-", compact([local.prefix, "vpn", local.suffix_unique])), 0, 50)
+      dashes      = true
+      slug        = "vpn"
+      min_length  = 1
+      max_length  = 50
+      scope       = "project"
+      regex       = "^[a-z]([-a-z0-9]*[a-z0-9])?$"
+    }
     compute_network = {
       name        = substr(join("-", compact([local.prefix, "vpc", local.suffix])), 0, 50)
       name_unique = substr(join("-", compact([local.prefix, "vpc", local.suffix_unique])), 0, 50)
@@ -58,6 +68,10 @@ locals {
     }
   }
   validation = {
+    compute_ha_vpn_gateway = {
+      valid_name        = length(regexall(local.gcp.compute_ha_vpn_gateway.regex, local.gcp.compute_ha_vpn_gateway.name)) > 0 && length(local.gcp.compute_ha_vpn_gateway.name) > local.gcp.compute_ha_vpn_gateway.min_length
+      valid_name_unique = length(regexall(local.gcp.compute_ha_vpn_gateway.regex, local.gcp.compute_ha_vpn_gateway.name_unique)) > 0
+    }
     compute_network = {
       valid_name        = length(regexall(local.gcp.compute_network.regex, local.gcp.compute_network.name)) > 0 && length(local.gcp.compute_network.name) > local.gcp.compute_network.min_length
       valid_name_unique = length(regexall(local.gcp.compute_network.regex, local.gcp.compute_network.name_unique)) > 0
