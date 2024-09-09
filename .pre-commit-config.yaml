@@ -6,6 +6,8 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
+        args:
+          - --args=--config-file __GIT_WORKING_DIR__/docs/config.yml
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
