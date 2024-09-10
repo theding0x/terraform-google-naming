@@ -42,5 +42,104 @@
     "scope": "project",
     "slug": "subnet",
     "dashes": true
+  },
+  {
+    "name": "compute_address",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "address",
+    "dashes": true
+  },
+  {
+    "name": "compute_attached_disk",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "disk",
+    "dashes": true
+  },
+  {
+    "name": "compute_autoscaler",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "autoscaler",
+    "dashes": true
+  },
+  {
+    "name": "compute_backend_bucket",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "bucket",
+    "dashes": true
+  },
+  {
+    "name": "compute_backend_iam",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "iam",
+    "dashes": true
+  },
+  {
+    "name": "compute_backend_bucket_signed_url_key",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "key",
+    "dashes": true
+  },
+  {
+    "name": "compute_backend_service",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "service",
+    "dashes": true
+  },
+  {
+    "name": "compute_backend_service_iam",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "iam",
+    "dashes": true
+  },
+  {
+    "name": "compute_backend_service_signed_url_key",
+    "length": {
+      "min": 1,
+      "max": 50
+    },
+    "regex": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+    "scope": "project",
+    "slug": "key",
+    "dashes": true
   }
 ]
