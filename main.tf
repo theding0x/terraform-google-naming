@@ -11,14 +11,14 @@ resource "random_string" "main" {
   length  = 60
   special = false
   upper   = false
-  numeric  = var.unique-include-numbers
+  numeric = var.unique-include-numbers
 }
 
 resource "random_string" "first_letter" {
   length  = 1
   special = false
   upper   = false
-  numeric  = false
+  numeric = false
 }
 
 
@@ -56,6 +56,16 @@ locals {
       scope       = "project"
       regex       = "^[a-z]([-a-z0-9]*[a-z0-9])?$"
     }
+    compute_subnetwork = {
+      name        = substr(join("-", compact([local.prefix, "subnet", local.suffix])), 0, 50)
+      name_unique = substr(join("-", compact([local.prefix, "subnet", local.suffix_unique])), 0, 50)
+      dashes      = true
+      slug        = "subnet"
+      min_length  = 1
+      max_length  = 50
+      scope       = "project"
+      regex       = "^[a-z]([-a-z0-9]*[a-z0-9])?$"
+    }
     container_cluster = {
       name        = substr(join("-", compact([local.prefix, "gke", local.suffix])), 0, 50)
       name_unique = substr(join("-", compact([local.prefix, "gke", local.suffix_unique])), 0, 50)
@@ -75,6 +85,10 @@ locals {
     compute_network = {
       valid_name        = length(regexall(local.gcp.compute_network.regex, local.gcp.compute_network.name)) > 0 && length(local.gcp.compute_network.name) > local.gcp.compute_network.min_length
       valid_name_unique = length(regexall(local.gcp.compute_network.regex, local.gcp.compute_network.name_unique)) > 0
+    }
+    compute_subnetwork = {
+      valid_name        = length(regexall(local.gcp.compute_subnetwork.regex, local.gcp.compute_subnetwork.name)) > 0 && length(local.gcp.compute_subnetwork.name) > local.gcp.compute_subnetwork.min_length
+      valid_name_unique = length(regexall(local.gcp.compute_subnetwork.regex, local.gcp.compute_subnetwork.name_unique)) > 0
     }
     container_cluster = {
       valid_name        = length(regexall(local.gcp.container_cluster.regex, local.gcp.container_cluster.name)) > 0 && length(local.gcp.container_cluster.name) > local.gcp.container_cluster.min_length

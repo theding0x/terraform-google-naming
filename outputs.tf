@@ -16,6 +16,11 @@ output "compute_network" {
   description = "Compute Network"
 }
 
+output "compute_subnetwork" {
+  value       = local.gcp.compute_subnetwork
+  description = "Compute Subnetwork"
+}
+
 output "container_cluster" {
   value       = local.gcp.container_cluster
   description = "Container Cluster"
