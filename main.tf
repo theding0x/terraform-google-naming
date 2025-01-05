@@ -46,11 +46,25 @@ locals {
       scope       = "project"
       regex       = "^[a-z][a-zA-Z0-9]+$"
     }
+    container_node_pool = {
+      name        = substr(join("-", compact([local.prefix, "np", local.suffix])), 0, 50)
+      name_unique = substr(join("-", compact([local.prefix, "np", local.suffix_unique])), 0, 50)
+      dashes      = true
+      slug        = "np"
+      min_length  = 1
+      max_length  = 50
+      scope       = "project"
+      regex       = "^[a-z]([-a-z0-9]*[a-z0-9])?$"
+    }
   }
   validation = {
     container_cluster = {
       valid_name        = length(regexall(local.gcp.container_cluster.regex, local.gcp.container_cluster.name)) > 0 && length(local.gcp.container_cluster.name) > local.gcp.container_cluster.min_length
       valid_name_unique = length(regexall(local.gcp.container_cluster.regex, local.gcp.container_cluster.name_unique)) > 0
+    }
+    container_node_pool = {
+      valid_name        = length(regexall(local.gcp.container_node_pool.regex, local.gcp.container_node_pool.name)) > 0 && length(local.gcp.container_node_pool.name) > local.gcp.container_node_pool.min_length
+      valid_name_unique = length(regexall(local.gcp.container_node_pool.regex, local.gcp.container_node_pool.name_unique)) > 0
     }
   }
 }
