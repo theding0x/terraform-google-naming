@@ -71,4 +71,9 @@ output "container_cluster" {
   description = "Container Cluster"
 }
 
+output "container_node_pool" {
+  value       = local.gcp.container_node_pool
+  description = "Container Node Pool"
+}
+
 
