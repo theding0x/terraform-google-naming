@@ -94,7 +94,7 @@ postgresql_server = {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_random"></a> [random](#provider\_random) | >= 3.3.2 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.6.2 |
 
 ## Modules
 
@@ -121,6 +121,19 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_compute_address"></a> [compute\_address](#output\_compute\_address) | Compute Address |
+| <a name="output_compute_attached_disk"></a> [compute\_attached\_disk](#output\_compute\_attached\_disk) | Compute Attached Disk |
+| <a name="output_compute_autoscaler"></a> [compute\_autoscaler](#output\_compute\_autoscaler) | Compute Autoscaler |
+| <a name="output_compute_backend_bucket"></a> [compute\_backend\_bucket](#output\_compute\_backend\_bucket) | Compute Backend Bucket |
+| <a name="output_compute_backend_bucket_signed_url_key"></a> [compute\_backend\_bucket\_signed\_url\_key](#output\_compute\_backend\_bucket\_signed\_url\_key) | Compute Backend Bucket Signed Url Key |
+| <a name="output_compute_backend_iam"></a> [compute\_backend\_iam](#output\_compute\_backend\_iam) | Compute Backend Iam |
+| <a name="output_compute_backend_service"></a> [compute\_backend\_service](#output\_compute\_backend\_service) | Compute Backend Service |
+| <a name="output_compute_backend_service_iam"></a> [compute\_backend\_service\_iam](#output\_compute\_backend\_service\_iam) | Compute Backend Service Iam |
+| <a name="output_compute_backend_service_signed_url_key"></a> [compute\_backend\_service\_signed\_url\_key](#output\_compute\_backend\_service\_signed\_url\_key) | Compute Backend Service Signed Url Key |
+| <a name="output_compute_ha_vpn_gateway"></a> [compute\_ha\_vpn\_gateway](#output\_compute\_ha\_vpn\_gateway) | Compute Ha Vpn Gateway |
+| <a name="output_compute_network"></a> [compute\_network](#output\_compute\_network) | Compute Network |
+| <a name="output_compute_subnetwork"></a> [compute\_subnetwork](#output\_compute\_subnetwork) | Compute Subnetwork |
+| <a name="output_container_cluster"></a> [container\_cluster](#output\_container\_cluster) | Container Cluster |
 | <a name="output_unique-seed"></a> [unique-seed](#output\_unique-seed) | n/a |
 | <a name="output_validation"></a> [validation](#output\_validation) | n/a |
 
